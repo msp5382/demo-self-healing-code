@@ -19,6 +19,6 @@ runs:
       shell: bash
       run: gh run view --job ${{ inputs.current_job_id }} --log > error.log; cat error.log >> $GITHUB_OUTPUT
       env:
-        GITHUB_TOKEN: ${{ inputs.token }}
+        GH_TOKEN: ${{ inputs.token }}
 
 
