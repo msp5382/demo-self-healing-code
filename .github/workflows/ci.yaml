@@ -39,7 +39,6 @@ jobs:
 
       - name: Call GPT for help
         if: failure()
-        run: gh run view --job ${{ github.job }} --log | grep error > error.log \
-             cat error.log
+        run: gh run view --job ${{ github.job }} --log > error.log; cat error.log
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
