@@ -38,6 +38,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Get Job ID from GH API
+        if: failure()
         id: get-job-id
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
