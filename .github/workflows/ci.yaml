@@ -37,8 +37,6 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-
-
       - name: Get Job ID from GH API
         if: failure()
         id: get-job-id
@@ -49,10 +47,9 @@ jobs:
           job_id=$(echo $jobs | jq -r '.jobs[] | select(.runner_name=="${{ runner.name }}") | .id')
           echo "job_id=$job_id" >> $GITHUB_OUTPUT
 
-
       - name: Call GPT for help
         if: failure()
-        uses: ./.github/workflows/selfheal.yaml@v1
+        uses: ./.github/workflows/selfheal.yaml
         with:
           current_job_id: ${{ steps.get-job-id.outputs.job_id }}
 
